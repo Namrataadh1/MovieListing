@@ -1,11 +1,31 @@
 
 package com.example.ashish.movielisting.rest.response;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Dates {
+public class Dates implements Parcelable{
     private String maximum;
     private String minimum;
+
+    protected Dates(Parcel in) {
+        maximum = in.readString();
+        minimum = in.readString();
+    }
+
+    public static final Creator<Dates> CREATOR = new Creator<Dates>() {
+        @Override
+        public Dates createFromParcel(Parcel in) {
+            return new Dates(in);
+        }
+
+        @Override
+        public Dates[] newArray(int size) {
+            return new Dates[size];
+        }
+    };
 
     /**
      * 
@@ -43,4 +63,14 @@ public class Dates {
         this.minimum = minimum;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(maximum);
+        parcel.writeString(minimum);
+    }
 }

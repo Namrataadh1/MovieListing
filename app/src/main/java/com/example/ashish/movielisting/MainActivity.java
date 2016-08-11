@@ -47,20 +47,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private List<MovieItemList> getMovieList() {
+  /*  private List<MovieItemList> getMovieList() {
         List<MovieItemList> listView = new ArrayList<>();
         listView.add(new MovieItemList("Sultan", R.drawable.sultan, "6th july", 9.0f));
         listView.add(new MovieItemList("Bajrangi Bhaijaan", R.drawable.bajrangi, "15th july", 8.5f));
         listView.add(new MovieItemList("Kick", R.drawable.kick, "25th july", 9.5f));
         listView.add(new MovieItemList("Jai Ho", R.drawable.jaiho, "1st august", 9.0f));
         return listView;
-    }
+    }*/
 
     private void getMovieListing() {
         RetrofitManager.getInstance().getMovieList("9ee4b67c5f201aa49b4344bcd6d83ef3", new Callback<MovieListing>() {
             @Override
             public void onResponse(Call<MovieListing> call, Response<MovieListing> response) {
                 Log.i(TAG, "onResponse: " + response.code());
+
                 if (response.code() == 200) {
 
                     upcomingMovieList.addAll(response.body().getResults());

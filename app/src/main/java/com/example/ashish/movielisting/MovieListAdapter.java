@@ -38,6 +38,8 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListViewHolder> 
                 .into(holder.ivMovieImage);
         holder.tvmovieReleaseDate.setText(listView.get(position).getReleaseDate());
         holder.tvMovieRatings.setText(""+listView.get(position).getVoteAverage());
+
+        holder.tvMovieTitle.setTag(listView.get(position));
     }
 
     @Override
